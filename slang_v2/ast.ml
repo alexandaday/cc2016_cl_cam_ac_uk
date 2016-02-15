@@ -1,7 +1,7 @@
 
 type var = string 
 
-type oper = ADD | MUL | SUB | LT | AND | OR | EQB | EQI
+type oper = ADD | MUL | SUB | LT | AND | OR | EQB | EQI | D
 
 type unary_oper = NEG | NOT | READ 
 
@@ -55,6 +55,7 @@ let pp_bop = function
   | EQB   -> "eqb" 
   | AND   -> "&&" 
   | OR   -> "||" 
+  | D -> “d”
 
 
 let string_of_oper = pp_bop 
@@ -130,6 +131,7 @@ let string_of_bop = function
   | EQB   -> "EQB" 
   | AND   -> "AND" 
   | OR   -> "OR" 
+  | D -> “D”
 
 let mk_con con l = 
     let rec aux carry = function 
@@ -138,7 +140,7 @@ let mk_con con l =
       | s::rest -> aux (carry ^ s ^ ", ") rest 
     in aux (con ^ "(") l 
 
-let rec string_of_expr = function 
+let rec string_of_expr = function
     | Unit             -> "Unit" 
     | Var x            -> mk_con "Var" [x] 
     | Integer n        -> mk_con "Integer" [string_of_int n] 

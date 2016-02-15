@@ -62,6 +62,7 @@ expr:
 | simple_expr                        {  $1 }
 | expr simple_expr                   { Past.App (get_loc(), $1, $2) } 
 | SUB expr %prec UNIT                { Past.UnaryOp(get_loc(), Past.NEG, $2) } 
+| expr D expr                        { Past.Op(get_loc(), $1, Past.D, $3) }
 | expr ADD expr                      { Past.Op(get_loc(), $1, Past.ADD, $3) }
 | expr SUB expr                      { Past.Op(get_loc(), $1, Past.SUB, $3) }
 | expr MUL expr                      { Past.Op(get_loc(), $1, Past.MUL, $3) }

@@ -296,12 +296,17 @@ let do_unary = function
   | (READ, STACK_UNIT)   -> STACK_INT (readint())
   | (op, _) -> Errors.complain ("do_unary: malformed unary operator: " ^ (string_of_unary_oper op))
 
+let computeDice = function
+  | (0,_,r) -> r
+  | (m,n,r) -> computerDice(m-1,n,r+Random.int(n)+1)
+
 let do_oper = function 
   | (AND,  STACK_BOOL m,  STACK_BOOL n) -> STACK_BOOL (m && n)
   | (OR,   STACK_BOOL m,  STACK_BOOL n) -> STACK_BOOL (m || n)
   | (EQB,  STACK_BOOL m,  STACK_BOOL n) -> STACK_BOOL (m = n)
   | (LT,   STACK_INT m,   STACK_INT n)  -> STACK_BOOL (m < n)
   | (EQI,  STACK_INT m,   STACK_INT n)  -> STACK_BOOL (m = n)
+  | (D,  STACK_INT m,   STACK_INT n)  -> STACK_INT (computeDice(m,n,0))
   | (ADD,  STACK_INT m,   STACK_INT n)  -> STACK_INT (m + n)
   | (SUB,  STACK_INT m,   STACK_INT n)  -> STACK_INT (m - n)
   | (MUL,  STACK_INT m,   STACK_INT n)  -> STACK_INT (m * n)

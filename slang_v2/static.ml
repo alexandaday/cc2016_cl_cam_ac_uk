@@ -96,6 +96,9 @@ let make_bop loc bop (e1, t1) (e2, t2) =
     | LT,  TEint,  TEint  -> (Op(loc, e1, bop, e2), TEbool)
     | LT,  TEint,  t      -> report_expecting e2 "integer" t
     | LT,  t,      _      -> report_expecting e1 "integer" t
+    | D, TEint,  TEint  -> (Op(loc, e1, bop, e2), t1) 
+    | D, TEint,  t      -> report_expecting e2 "integer" t
+    | D, t,      _      -> report_expecting e1 "integer" t
     | ADD, TEint,  TEint  -> (Op(loc, e1, bop, e2), t1) 
     | ADD, TEint,  t      -> report_expecting e2 "integer" t
     | ADD, t,      _      -> report_expecting e1 "integer" t
