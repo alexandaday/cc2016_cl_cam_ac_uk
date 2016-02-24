@@ -106,7 +106,7 @@ let pp_uop = function
 
 
 let pp_bop = function 
-  | D -> “d”
+  | D -> "d"
   | ADD -> "+" 
   | MUL  -> "*" 
   | SUB -> "-" 
@@ -180,7 +180,7 @@ let string_of_uop = function
   | NOT -> "NOT" 
 
 let string_of_bop = function 
-  | D -> “D”
+  | D -> "D"
   | ADD -> "ADD" 
   | MUL  -> "MUL" 
   | SUB -> "SUB" 

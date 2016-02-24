@@ -296,9 +296,9 @@ let do_unary = function
   | (READ, STACK_UNIT)   -> STACK_INT (readint())
   | (op, _) -> Errors.complain ("do_unary: malformed unary operator: " ^ (string_of_unary_oper op))
 
-let computeDice = function
+let rec computeDice = function
   | (0,_,r) -> r
-  | (m,n,r) -> computeDice(m-1,n,r+Random.int(n)+1)
+  | (m,n,r) -> computeDice(m-1,n,r + Random.int(n) + 1)
 
 let do_oper = function 
   | (AND,  STACK_BOOL m,  STACK_BOOL n) -> STACK_BOOL (m && n)
