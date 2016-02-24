@@ -298,7 +298,7 @@ let do_unary = function
 
 let computeDice = function
   | (0,_,r) -> r
-  | (m,n,r) -> computerDice(m-1,n,r+Random.int(n)+1)
+  | (m,n,r) -> computeDice(m-1,n,r+Random.int(n)+1)
 
 let do_oper = function 
   | (AND,  STACK_BOOL m,  STACK_BOOL n) -> STACK_BOOL (m && n)

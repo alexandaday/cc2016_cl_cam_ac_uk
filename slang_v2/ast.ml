@@ -55,7 +55,7 @@ let pp_bop = function
   | EQB   -> "eqb" 
   | AND   -> "&&" 
   | OR   -> "||" 
-  | D -> “d”
+  | D -> "d"
 
 
 let string_of_oper = pp_bop 
@@ -131,7 +131,7 @@ let string_of_bop = function
   | EQB   -> "EQB" 
   | AND   -> "AND" 
   | OR   -> "OR" 
-  | D -> “D”
+  | D -> "D"
 
 let mk_con con l = 
     let rec aux carry = function 
